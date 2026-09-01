@@ -50,31 +50,28 @@
                 <i class="fa-solid fa-lock absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-500"></i>
                 <input type="password" id="passwordInput" placeholder="أدخل كلمة المرور..." class="w-full bg-slate-950/50 border-2 border-slate-700 rounded-xl pr-10 pl-4 py-3.5 text-center text-white focus:outline-none focus:border-amber-500 focus:bg-slate-950 transition-all tracking-widest font-bold placeholder:text-slate-600 placeholder:font-normal">
             </div>
-            <p id="errorMsg" class="text-rose-500 text-xs font-bold mb-4 hidden bg-rose-500/10 py-2 rounded-lg border border-rose-500/20">كلمة المرور غير صحيحة! تعالى اسألني عليها </p>
+            <p id="errorMsg" class="text-rose-500 text-xs font-bold mb-4 hidden bg-rose-500/10 py-2 rounded-lg border border-rose-500/20">كلمة المرور غير صحيحة!</p>
             
             <button onclick="checkPassword()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black px-4 py-3.5 rounded-xl shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all transform hover:scale-[1.02] active:scale-95 flex justify-center items-center gap-2">
                 <i class="fa-solid fa-unlock-keyhole text-lg"></i>
                 <span class="text-lg">تسجيل الدخول</span>
             </button>
-            <p class="text-[11px] font-bold text-slate-500 mt-5 border-t border-slate-800 pt-3"><span class="text-amber-500/80 font-black tracking-widest en-font"></span></p>
         </div>
     </div>
 
-    <!-- Top Branding & Navigation Header -->
+    <!-- Header -->
     <header class="bg-slate-900/90 backdrop-blur-md text-white shadow-2xl border-b-2 border-amber-500/80 sticky top-0 z-40 no-print">
         <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            
             <div class="flex items-center gap-4">
-                <!-- Gym Logo Badge -->
                 <div class="relative group">
-                    <div class="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-indigo-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-indigo-600 rounded-2xl blur opacity-75"></div>
                     <div class="relative bg-slate-950 p-2 rounded-2xl border border-amber-500/50 flex items-center justify-center w-16 h-16 shadow-xl">
                         <i class="fa-solid fa-dumbbell text-3xl text-amber-400 transform -rotate-12"></i>
                     </div>
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
-                        <h1 class="text-3xl font-black tracking-widest text-amber-400 uppercase en-font drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">MONTU GYM</h1>
+                        <h1 class="text-3xl font-black tracking-widest text-amber-400 uppercase en-font">MONTU GYM</h1>
                         <span class="bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-extrabold px-2 py-0.5 rounded-full en-font">DISCIPLINE • STRENGTH • SUCCESS</span>
                     </div>
                     <h2 class="text-sm font-extrabold text-slate-300 tracking-tight mt-0.5">نظام تحليل الحضور والانصراف والشيفتات المتعددة</h2>
@@ -82,28 +79,23 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <!-- Developer Signature Header Pill -->
                 <div class="bg-slate-950/80 border border-slate-700/80 px-4 py-2 rounded-xl shadow-inner flex items-center gap-2">
                     <div class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></div>
                     <span class="text-xs text-slate-400 en-font">By : <strong class="text-amber-400 font-bold">Eng . Moataz Hussein</strong></span>
                 </div>
-
                 <button onclick="window.print()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black px-5 py-2.5 rounded-xl shadow-lg transition-all flex items-center gap-2 transform hover:scale-105">
                     <i class="fa-solid fa-print text-base"></i>
                     <span>طباعة / PDF</span>
                 </button>
             </div>
-
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex-1 w-full">
-
         <!-- Controls & Shift Info Panel -->
         <div class="bg-slate-900/80 backdrop-blur rounded-2xl shadow-xl border border-slate-800 p-6 mb-8 no-print">
             <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
-                
-                <!-- File Drag & Drop Upload -->
+                <!-- File Upload -->
                 <div class="w-full lg:w-1/3">
                     <label class="block text-xs font-bold text-slate-300 mb-2">تحميل ملف البصمة (`att.csv` / `att.xlsx`)</label>
                     <div class="border-2 border-dashed border-slate-700 hover:border-amber-400 rounded-xl p-4 text-center bg-slate-950/50 transition-colors relative cursor-pointer group" id="dropZone">
@@ -114,90 +106,43 @@
                     </div>
                 </div>
 
-                <!-- Shift Definitions Display -->
+                <!-- Shift Definitions -->
                 <div class="w-full lg:w-2/3 bg-slate-950/70 p-4 rounded-xl border border-slate-800">
                     <h4 class="text-xs font-extrabold text-slate-200 mb-2 flex items-center gap-1.5">
                         <i class="fa-solid fa-clock-rotate-left text-amber-400"></i>
                         الشيفتات المعرفة بالنظام ومواعيدها الرسمية:
                     </h4>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-                        <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300">
-                            <span class="font-bold text-amber-400 block">09:00 ص - 05:00 م</span>
-                            <span class="text-[10px] text-slate-400">(8 ساعات عمل)</span>
-                        </div>
-                        <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300">
-                            <span class="font-bold text-amber-400 block">09:00 ص - 02:00 م</span>
-                            <span class="text-[10px] text-slate-400">(5 ساعات عمل)</span>
-                        </div>
-                        <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300">
-                            <span class="font-bold text-amber-400 block">12:00 م - 08:00 م</span>
-                            <span class="text-[10px] text-slate-400">(8 ساعات عمل)</span>
-                        </div>
-                        <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300">
-                            <span class="font-bold text-amber-400 block">02:00 م - 10:00 م</span>
-                            <span class="text-[10px] text-slate-400">(8 ساعات عمل)</span>
-                        </div>
-                        <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300">
-                            <span class="font-bold text-amber-400 block">05:00 م - 10:00 م</span>
-                            <span class="text-[10px] text-slate-400">(5 ساعات عمل)</span>
-                        </div>
-                        <div class="bg-slate-900 p-2 rounded border border-amber-500/50 text-slate-300">
-                            <span class="font-bold text-amber-400 block">05:00 م - 01:00 ص</span>
-                            <span class="text-[10px] text-slate-400">(8 ساعات عمل)</span>
-                        </div>
-                        <div class="bg-slate-900 p-2 rounded border border-amber-500/50 text-slate-300">
-                            <span class="font-bold text-amber-400 block">08:00 م - 12:00 ص</span>
-                            <span class="text-[10px] text-slate-400">(4 ساعات عمل)</span>
-                        </div>
-                        <div class="bg-amber-500/10 text-amber-400 p-2 rounded border border-amber-500/30 font-bold flex items-center justify-center text-[11px] text-center">
-                            مطابقة آليّة ذكية لجميع الشيفتات
-                        </div>
+                        <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300"><span class="font-bold text-amber-400 block">09:00 ص - 05:00 م</span><span class="text-[10px] text-slate-400">(8 ساعات)</span></div>
+                        <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300"><span class="font-bold text-amber-400 block">09:00 ص - 02:00 م</span><span class="text-[10px] text-slate-400">(5 ساعات)</span></div>
+                        <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300"><span class="font-bold text-amber-400 block">12:00 م - 08:00 م</span><span class="text-[10px] text-slate-400">(8 ساعات)</span></div>
+                        <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300"><span class="font-bold text-amber-400 block">02:00 م - 10:00 م</span><span class="text-[10px] text-slate-400">(8 ساعات)</span></div>
+                        <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300"><span class="font-bold text-amber-400 block">05:00 م - 10:00 م</span><span class="text-[10px] text-slate-400">(5 ساعات)</span></div>
+                        <div class="bg-slate-900 p-2 rounded border border-amber-500/50 text-slate-300"><span class="font-bold text-amber-400 block">05:00 م - 01:00 ص</span><span class="text-[10px] text-slate-400">(8 ساعات)</span></div>
+                        <div class="bg-slate-900 p-2 rounded border border-amber-500/50 text-slate-300"><span class="font-bold text-amber-400 block">08:00 م - 12:00 ص</span><span class="text-[10px] text-slate-400">(4 ساعات)</span></div>
+                        <div class="bg-amber-500/10 text-amber-400 p-2 rounded border border-amber-500/30 font-bold flex items-center justify-center text-[11px] text-center">مطابقة آليّة دقيقة</div>
                     </div>
                 </div>
-
             </div>
-        </div>
-
-        <!-- Printable Header -->
-        <div class="hidden print-only mb-6 text-center border-b-2 border-slate-800 pb-4 bg-white text-slate-900">
-            <div class="flex justify-center items-center gap-2 mb-2">
-                <i class="fa-solid fa-dumbbell text-3xl text-amber-600"></i>
-                <h2 class="text-4xl font-black uppercase tracking-widest en-font">MONTU GYM</h2>
-            </div>
-            <h1 class="text-2xl font-bold text-slate-900 mt-2">تقرير الحضور والغياب والساعات الإضافية</h1>
-            <p class="text-xs text-slate-600 mt-1" id="printReportDate">إدارة الموارد البشرية -- تحليل سجلات البصمة</p>
-            <p class="text-[11px] text-amber-700 font-bold mt-2 en-font">Designed & Developed By : Eng . Moataz Hussein</p>
         </div>
 
         <!-- Overview KPIs -->
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             <div class="bg-slate-900 p-4 rounded-xl border-l-4 border-l-blue-500 shadow-xl flex items-center gap-3">
                 <div class="bg-blue-950 text-blue-400 p-3 rounded-xl border border-blue-800"><i class="fa-solid fa-users text-xl"></i></div>
-                <div>
-                    <p class="text-xs text-slate-400 font-bold">عدد الموظفين</p>
-                    <p class="text-lg font-black text-white" id="kpiCount">22 موظفاً</p>
-                </div>
+                <div><p class="text-xs text-slate-400 font-bold">عدد الموظفين</p><p class="text-lg font-black text-white" id="kpiCount">22 موظفاً</p></div>
             </div>
             <div class="bg-slate-900 p-4 rounded-xl border-l-4 border-l-emerald-500 shadow-xl flex items-center gap-3">
                 <div class="bg-emerald-950 text-emerald-400 p-3 rounded-xl border border-emerald-800"><i class="fa-solid fa-calendar-check text-xl"></i></div>
-                <div>
-                    <p class="text-xs text-slate-400 font-bold">إجمالي أيام العمل بالشهر</p>
-                    <p class="text-lg font-black text-white" id="kpiTotalDays">30 يوم</p>
-                </div>
+                <div><p class="text-xs text-slate-400 font-bold">أيام الشهر المرصودة</p><p class="text-lg font-black text-white" id="kpiTotalDays">0 يوم</p></div>
             </div>
             <div class="bg-slate-900 p-4 rounded-xl border-l-4 border-l-amber-500 shadow-xl flex items-center gap-3">
                 <div class="bg-amber-950 text-amber-400 p-3 rounded-xl border border-amber-800"><i class="fa-solid fa-clock-rotate-left text-xl"></i></div>
-                <div>
-                    <p class="text-xs text-slate-400 font-bold">إجمالي الساعات الإضافية</p>
-                    <p class="text-lg font-black text-amber-400" id="kpiOvertime">0 ساعة</p>
-                </div>
+                <div><p class="text-xs text-slate-400 font-bold">إجمالي الساعات الإضافية</p><p class="text-lg font-black text-amber-400" id="kpiOvertime">0 ساعة</p></div>
             </div>
             <div class="bg-slate-900 p-4 rounded-xl border-l-4 border-l-indigo-500 shadow-xl flex items-center gap-3">
                 <div class="bg-indigo-950 text-indigo-400 p-3 rounded-xl border border-indigo-800"><i class="fa-solid fa-award text-xl"></i></div>
-                <div>
-                    <p class="text-xs text-slate-400 font-bold">متوسط التزام الحضور</p>
-                    <p class="text-lg font-black text-indigo-300" id="kpiCommitment">-- %</p>
-                </div>
+                <div><p class="text-xs text-slate-400 font-bold">متوسط الالتزام</p><p class="text-lg font-black text-indigo-300" id="kpiCommitment">-- %</p></div>
             </div>
         </div>
 
@@ -228,42 +173,13 @@
                         </tr>
                     </thead>
                     <tbody id="reportTbody" class="divide-y divide-slate-800/80 text-xs font-semibold">
-                        <!-- Dynamic Rows Here -->
                     </tbody>
                 </table>
             </div>
         </div>
-
     </main>
 
-    <!-- Professional Developer & Gym Footer -->
-    <footer class="mt-auto bg-slate-900 border-t border-slate-800 no-print shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            
-            <div class="flex items-center gap-3">
-                <div class="bg-amber-500/20 p-2 rounded-xl border border-amber-500/40 text-amber-400">
-                    <i class="fa-solid fa-dumbbell text-lg"></i>
-                </div>
-                <div>
-                    <span class="text-slate-400 text-xs font-bold">&copy; 2026 جميع الحقوق محفوظة لـ</span>
-                    <span class="text-amber-400 font-black en-font tracking-wider ml-1">MONTU GYM</span>
-                </div>
-            </div>
-            
-            <div class="bg-gradient-to-r from-slate-950 to-indigo-950 px-6 py-3 rounded-2xl shadow-xl border border-amber-500/30 flex items-center gap-3">
-                <div class="bg-amber-500/20 p-2 rounded-xl text-amber-400">
-                    <i class="fa-solid fa-code text-sm"></i>
-                </div>
-                <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 leading-none">
-                    <span class="text-slate-400 text-xs font-semibold en-font">Designed & Developed By:</span>
-                    <span class="text-amber-400 font-black text-sm tracking-wide en-font">Eng . Moataz Hussein</span>
-                </div>
-            </div>
-
-        </div>
-    </footer>
-
-    <!-- Modal for Daily Punch Breakdown -->
+    <!-- Modal Details -->
     <div id="detailsModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4 z-50 no-print">
         <div class="bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 max-w-5xl w-full max-h-[90vh] flex flex-col overflow-hidden">
             <div class="p-4 bg-slate-950 text-white flex justify-between items-center border-b-2 border-amber-500">
@@ -291,8 +207,7 @@
                             <th class="p-2.5 text-center">التأخير</th>
                         </tr>
                     </thead>
-                    <tbody id="modalTbody" class="divide-y divide-slate-800 text-slate-200">
-                    </tbody>
+                    <tbody id="modalTbody" class="divide-y divide-slate-800 text-slate-200"></tbody>
                 </table>
             </div>
             <div class="p-3 bg-slate-950 border-t border-slate-800 flex justify-between items-center">
@@ -306,36 +221,25 @@
     <script>
         function checkPassword() {
             const pass = document.getElementById('passwordInput').value;
-            // يمكنك تغيير "1234" لأي كلمة مرور تريدها
             if (pass === 'moataz123') { 
                 const lockScreen = document.getElementById('lockScreen');
                 lockScreen.classList.add('opacity-0');
-                document.body.classList.remove('overflow-hidden'); // السماح بالسكرول بعد الدخول
-                setTimeout(() => {
-                    lockScreen.classList.add('hidden');
-                }, 500);
+                document.body.classList.remove('overflow-hidden');
+                setTimeout(() => lockScreen.classList.add('hidden'), 500);
             } else {
                 const errorMsg = document.getElementById('errorMsg');
                 const passInput = document.getElementById('passwordInput');
                 errorMsg.classList.remove('hidden');
                 passInput.classList.add('border-rose-500', 'animate-shake', 'bg-rose-950/20');
-                setTimeout(() => {
-                    passInput.classList.remove('border-rose-500', 'animate-shake', 'bg-rose-950/20');
-                }, 400);
+                setTimeout(() => passInput.classList.remove('border-rose-500', 'animate-shake', 'bg-rose-950/20'), 400);
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // التركيز التلقائي على حقل الباسورد
             const passInput = document.getElementById('passwordInput');
             if (passInput) {
                 passInput.focus();
-                // دعم تسجيل الدخول بالضغط على زر Enter
-                passInput.addEventListener('keypress', function (e) {
-                    if (e.key === 'Enter') {
-                        checkPassword();
-                    }
-                });
+                passInput.addEventListener('keypress', e => { if (e.key === 'Enter') checkPassword(); });
             }
         });
 
@@ -360,7 +264,7 @@
 
         let parsedRecords = [];
         let globalProcessedData = {};
-        let totalReportDays = 30;
+        let totalReportDays = 0;
 
         document.getElementById('csvFile').addEventListener('change', handleFileUpload);
 
@@ -385,12 +289,29 @@
             reader.readAsArrayBuffer(file);
         }
 
+        // قراءة وتحديد أعمدة ID والوقت تلقائياً حتى لو تغيّر ترتيبها
         function parseRawData(rows) {
             parsedRecords = [];
-            rows.forEach(row => {
-                if (!row || row.length < 2) return;
-                const id = parseInt(row[0]);
-                const timeVal = row[1];
+            if (!rows || rows.length === 0) return;
+
+            let idCol = 0;
+            let timeCol = 1;
+
+            // كشف رأس الجدول (Header) إن وجد
+            const firstRow = rows[0];
+            if (firstRow && firstRow.length >= 2) {
+                firstRow.forEach((cell, idx) => {
+                    const val = String(cell).toLowerCase();
+                    if (val.includes('id') || val.includes('كود') || val.includes('رقم')) idCol = idx;
+                    if (val.includes('time') || val.includes('date') || val.includes('وقت') || val.includes('تاريخ')) timeCol = idx;
+                });
+            }
+
+            rows.forEach((row, index) => {
+                if (!row || row.length <= Math.max(idCol, timeCol)) return;
+                
+                const id = parseInt(row[idCol]);
+                const timeVal = row[timeCol];
 
                 if (!isNaN(id) && timeVal) {
                     const dt = new Date(timeVal);
@@ -402,30 +323,22 @@
             calculateAndRender();
         }
 
-        function matchShift(checkIn, checkOut) {
+        // مطابقة الشيفت بناءً على أقرب موعد حضور متوقع
+        function matchShift(checkIn) {
             const inMins = checkIn.getHours() * 60 + checkIn.getMinutes();
-            let outMinsRaw = checkOut ? (checkOut.getHours() * 60 + checkOut.getMinutes()) : (inMins + 480);
-            
-            const outMins = outMinsRaw < inMins ? outMinsRaw + 1440 : outMinsRaw;
 
             let bestShift = DEFINED_SHIFTS[0];
             let minDiff = Infinity;
 
             DEFINED_SHIFTS.forEach(shift => {
                 const shiftInMins = shift.startHour * 60 + shift.startMin;
-                let shiftOutMins = shift.endHour * 60 + shift.endMin;
+                let diffIn = Math.abs(inMins - shiftInMins);
                 
-                if (shiftOutMins < shiftInMins) {
-                    shiftOutMins += 1440; 
-                }
+                // لمعالجة الفروق الليلية القريبة
+                if (diffIn > 720) diffIn = 1440 - diffIn;
 
-                const diffIn = Math.abs(inMins - shiftInMins);
-                const diffOut = Math.abs(outMins - shiftOutMins);
-
-                const totalDiff = (diffIn * 1.5) + diffOut;
-
-                if (totalDiff < minDiff) {
-                    minDiff = totalDiff;
+                if (diffIn < minDiff) {
+                    minDiff = diffIn;
                     bestShift = shift;
                 }
             });
@@ -444,7 +357,8 @@
             parsedRecords.forEach(rec => {
                 if (!empStats[rec.id]) return;
                 
-                const logicalDate = new Date(rec.timestamp.getTime() - (5 * 3600 * 1000));
+                // الساعات الأولى من الفجر (قبل 4 ص) تتبع شيفت اليوم السابق
+                const logicalDate = new Date(rec.timestamp.getTime() - (4 * 3600 * 1000));
                 const dayKey = logicalDate.toISOString().split('T')[0];
                 
                 uniqueDays.add(dayKey);
@@ -455,12 +369,7 @@
                 empStats[rec.id].dailyPunches[dayKey].push(rec.timestamp); 
             });
 
-            if (uniqueDays.size > 0) {
-                totalReportDays = uniqueDays.size;
-            } else {
-                totalReportDays = 30;
-            }
-
+            totalReportDays = uniqueDays.size;
             document.getElementById('kpiTotalDays').textContent = `${totalReportDays} يوم`;
 
             const finalCalculations = defaultEmployees.map(emp => {
@@ -477,22 +386,33 @@
                     daysKeys.forEach(dayStr => {
                         const times = stat.dailyPunches[dayStr].sort((a, b) => a - b);
                         const cin = times[0];
-                        const cout = times.length > 1 ? times[times.length - 1] : new Date(cin.getTime() + 8*3600*1000);
+                        const hasCheckOut = times.length > 1;
+                        const cout = hasCheckOut ? times[times.length - 1] : null;
 
-                        const matched = matchShift(cin, cout);
+                        const matched = matchShift(cin);
                         shiftCounts[matched.name] = (shiftCounts[matched.name] || 0) + 1;
 
-                        const durationHours = Math.max(0, (cout - cin) / (1000 * 3600));
-                        const actualWorked = durationHours > 0.5 ? durationHours : matched.requiredHours;
-                        
-                        const overtime = Math.max(0, actualWorked - matched.requiredHours);
+                        let actualWorked = 0;
+                        let overtime = 0;
+
+                        // إذا لم يبصم انصراف يحصل على 0 ساعات عمل
+                        if (hasCheckOut && cout) {
+                            let duration = (cout - cin) / (1000 * 3600);
+                            if (duration < 0) duration += 24; // احتساب البصمة العابرة لمنتصف الليل
+                            actualWorked = Math.max(0, duration);
+                            overtime = Math.max(0, actualWorked - matched.requiredHours);
+                        }
 
                         const cinMins = cin.getHours() * 60 + cin.getMinutes();
                         const shiftStartMins = matched.startHour * 60 + matched.startMin;
-                        const delayMins = Math.max(0, cinMins - shiftStartMins);
+                        
+                        let delayMins = cinMins - shiftStartMins;
+                        if (delayMins < -720) delayMins += 1440;
+                        delayMins = Math.max(0, delayMins);
 
                         let dayScore = 100;
-                        if (delayMins > 15 && delayMins <= 30) dayScore = 85;
+                        if (!hasCheckOut) dayScore = 50; // خصم لعدم إثبات الانصراف
+                        else if (delayMins > 15 && delayMins <= 30) dayScore = 85;
                         else if (delayMins > 30 && delayMins <= 60) dayScore = 70;
                         else if (delayMins > 60) dayScore = 50;
 
@@ -503,15 +423,30 @@
                         dayDetails.push({
                             date: dayStr,
                             cin: cin.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }),
-                            cout: cout.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }),
+                            cout: hasCheckOut ? cout.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' }) : 'غير مسجل',
                             shiftName: matched.name,
                             worked: actualWorked.toFixed(1),
                             overtime: overtime.toFixed(1),
-                            delay: delayMins > 0 ? `${delayMins} دقيقة` : 'لا يوجد'
+                            delay: !hasCheckOut ? 'بدون بصمة خروج' : (delayMins > 0 ? `${delayMins} دقيقة` : 'لا يوجد')
                         });
                     });
                 } else {
-                    return getSmartFallback(emp);
+                    // الموظف لم يحضر إطلاقاً
+                    const abs = totalReportDays;
+                    const res = {
+                        id: emp.id,
+                        name: emp.name,
+                        frequentShift: "--",
+                        attendanceDays: 0,
+                        absenceDays: abs,
+                        totalMonthlyHours: 0,
+                        overtimeHours: 0,
+                        commitmentScore: 0,
+                        evaluation: getEvalRating(0, 0, abs),
+                        dayDetails: []
+                    };
+                    globalProcessedData[emp.id] = res;
+                    return res;
                 }
 
                 let mostFrequentShift = "09:00 ص - 05:00 م";
@@ -525,7 +460,7 @@
 
                 const attendanceDays = daysKeys.length;
                 const absenceDays = Math.max(0, totalReportDays - attendanceDays);
-                const avgCommitment = attendanceDays > 0 ? Math.round(totalCommitmentScore / attendanceDays) : 95;
+                const avgCommitment = attendanceDays > 0 ? Math.round(totalCommitmentScore / attendanceDays) : 0;
 
                 const result = {
                     id: emp.id,
@@ -547,52 +482,8 @@
             renderTable(finalCalculations);
         }
 
-        function getSmartFallback(emp) {
-            const presets = {
-                1:  { shift: "09:00 ص - 05:00 م", att: 26, total: 208, ot: 0,  score: 95 },
-                2:  { shift: "09:00 ص - 05:00 م", att: 30, total: 240, ot: 0,   score: 98 },
-                3:  { shift: "05:00 م - 01:00 ص", att: 28, total: 224, ot: 5,   score: 93 }, 
-                4:  { shift: "02:00 م - 10:00 م", att: 25, total: 200, ot: 10, score: 88 },
-                5:  { shift: "08:00 م - 12:00 ص", att: 29, total: 116, ot: 0, score: 99 },   
-                6:  { shift: "09:00 ص - 05:00 م", att: 26, total: 208, ot: 5,   score: 98 },
-                7:  { shift: "02:00 م - 10:00 م", att: 20, total: 160, ot: 8, score: 85 },
-                8:  { shift: "09:00 ص - 05:00 م", att: 27, total: 216, ot: 0,   score: 99 },
-                9:  { shift: "05:00 م - 01:00 ص", att: 26, total: 208, ot: 10,  score: 94 }, 
-                10: { shift: "12:00 م - 08:00 م", att: 28, total: 224, ot: 0,   score: 96 },
-                11: { shift: "09:00 ص - 05:00 م", att: 24, total: 192, ot: 0,   score: 93 },
-                12: { shift: "09:00 ص - 05:00 م", att: 26, total: 208, ot: 0,   score: 95 },
-                13: { shift: "09:00 ص - 05:00 م", att: 30, total: 240, ot: 0,   score: 99 },
-                14: { shift: "12:00 م - 08:00 م", att: 25, total: 200, ot: 25,  score: 91 },
-                15: { shift: "09:00 ص - 05:00 م", att: 22, total: 176, ot: 0,   score: 86 },
-                16: { shift: "09:00 ص - 05:00 م", att: 28, total: 224, ot: 5,   score: 97 },
-                17: { shift: "09:00 ص - 05:00 م", att: 26, total: 208, ot: 0,   score: 96 },
-                18: { shift: "09:00 ص - 02:00 م", att: 24, total: 120, ot: 0,   score: 75 },
-                19: { shift: "09:00 ص - 05:00 م", att: 28, total: 224, ot: 0,   score: 99 },
-                20: { shift: "02:00 م - 10:00 م", att: 26, total: 208, ot: 12, score: 97 },
-                21: { shift: "02:00 م - 10:00 م", att: 27, total: 216, ot: 16, score: 96 },
-                22: { shift: "08:00 م - 12:00 ص", att: 26, total: 104, ot: 8,  score: 97 }   
-            };
-
-            const p = presets[emp.id] || { shift: "09:00 ص - 05:00 م", att: 26, total: 208, ot: 0, score: 95 };
-            const abs = Math.max(0, totalReportDays - p.att);
-            
-            const res = {
-                id: emp.id,
-                name: emp.name,
-                frequentShift: p.shift,
-                attendanceDays: p.att,
-                absenceDays: abs,
-                totalMonthlyHours: p.total,
-                overtimeHours: p.ot,
-                commitmentScore: p.score,
-                evaluation: getEvalRating(p.score, p.ot, abs),
-                dayDetails: []
-            };
-            globalProcessedData[emp.id] = res;
-            return res;
-        }
-
         function getEvalRating(score, overtime, absenceDays) {
+            if (score === 0 && absenceDays === 0) return { label: "لا توجد بيانات", bg: "bg-slate-800 text-slate-400 border border-slate-700" };
             if (absenceDays > 5) return { label: "إنذار غياب", bg: "bg-red-950 text-red-300 border border-red-800" };
             if (score >= 95 && overtime > 15) return { label: "ممتاز مرتفع (إضافي)", bg: "bg-emerald-950 text-emerald-300 border border-emerald-800" };
             if (score >= 90) return { label: "ممتاز", bg: "bg-blue-950 text-blue-300 border border-blue-800" };
@@ -607,10 +498,14 @@
 
             let sumOt = 0;
             let sumScore = 0;
+            let activeCount = 0;
 
             list.forEach(item => {
                 sumOt += Number(item.overtimeHours);
-                sumScore += Number(item.commitmentScore);
+                if (item.attendanceDays > 0) {
+                    sumScore += Number(item.commitmentScore);
+                    activeCount++;
+                }
 
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-800/60 transition-colors border-b border-slate-800/80";
@@ -640,7 +535,7 @@
                         </span>
                     </td>
                     <td class="py-3 px-3 text-center no-print">
-                        <button onclick="openModal(${item.id})" class="text-amber-400 hover:text-slate-950 bg-amber-500/10 hover:bg-amber-500 p-2 rounded-lg transition-all shadow border border-amber-500/30" title="عرض السجل اليومي للشيفتات">
+                        <button onclick="openModal(${item.id})" class="text-amber-400 hover:text-slate-950 bg-amber-500/10 hover:bg-amber-500 p-2 rounded-lg transition-all shadow border border-amber-500/30" title="عرض السجل اليومي">
                             <i class="fa-solid fa-eye text-sm"></i>
                         </button>
                     </td>
@@ -650,7 +545,7 @@
 
             document.getElementById('kpiCount').textContent = `${list.length} موظفاً`;
             document.getElementById('kpiOvertime').textContent = `${sumOt.toLocaleString()} ساعة`;
-            document.getElementById('kpiCommitment').textContent = `${Math.round(sumScore / list.length)}%`;
+            document.getElementById('kpiCommitment').textContent = activeCount > 0 ? `${Math.round(sumScore / activeCount)}%` : `-- %`;
         }
 
         function openModal(empId) {
@@ -670,16 +565,16 @@
                     tr.innerHTML = `
                         <td class="p-2.5 text-center font-bold text-slate-200">${d.date}</td>
                         <td class="p-2.5 text-center text-slate-300">${d.cin}</td>
-                        <td class="p-2.5 text-center text-slate-300">${d.cout}</td>
+                        <td class="p-2.5 text-center ${d.cout === 'غير مسجل' ? 'text-rose-400 font-bold' : 'text-slate-300'}">${d.cout}</td>
                         <td class="p-2.5 text-center font-bold text-amber-400 bg-amber-950/30">${d.shiftName}</td>
                         <td class="p-2.5 text-center font-bold text-indigo-300">${d.worked} ساعة</td>
                         <td class="p-2.5 text-center font-bold text-amber-400">${d.overtime > 0 ? '+' + d.overtime : '0'}</td>
-                        <td class="p-2.5 text-center ${d.delay !== 'لا يوجد' ? 'text-rose-400 font-bold' : 'text-emerald-400'}">${d.delay}</td>
+                        <td class="p-2.5 text-center ${d.delay.includes('دقيقة') || d.delay.includes('بدون') ? 'text-rose-400 font-bold' : 'text-emerald-400'}">${d.delay}</td>
                     `;
                     modalTbody.appendChild(tr);
                 });
             } else {
-                modalTbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-400 font-bold bg-slate-950"><i class="fa-solid fa-file-excel text-2xl text-amber-400 mb-2 block"></i>قم برفع ملف البصمة لعرض التفاصيل اليومية بدقة.</td></tr>`;
+                modalTbody.innerHTML = `<tr><td colspan="7" class="p-6 text-center text-slate-400 font-bold bg-slate-950"><i class="fa-solid fa-file-excel text-2xl text-amber-400 mb-2 block"></i>لا توجد سجلات بصمة مسجلة لهذا الموظف.</td></tr>`;
             }
 
             document.getElementById('detailsModal').classList.remove('hidden');
