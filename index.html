@@ -43,7 +43,7 @@
             </div>
         </div>
         <h2 class="text-4xl font-black tracking-widest text-amber-400 uppercase en-font drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] mb-2">MONTU GYM</h2>
-        <p class="text-slate-400 text-sm font-bold mb-8">BY : Eng . Moataz Hussein</p>
+        <p class="text-slate-400 text-sm font-bold mb-8">BY : Eng . Moataz Hussein <br>البشمهندس معتز ❤ </p>
 
         <div class="bg-slate-900/80 backdrop-blur-xl p-8 rounded-3xl border border-slate-700 shadow-2xl w-80 sm:w-96 text-center relative z-10">
             <div class="mb-5 relative">
@@ -81,12 +81,16 @@
             <div class="flex items-center gap-4">
                 <div class="bg-slate-950/80 border border-slate-700/80 px-4 py-2 rounded-xl shadow-inner flex items-center gap-2">
                     <div class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></div>
-                    <span class="text-xs text-slate-400 en-font">By : <strong class="text-amber-400 font-bold">Eng . Moataz Hussein</strong></span>
+                    <span class="text-xs text-slate-400 en-font">By : <strong class="text-amber-400 font-bold">Eng . Moataz Hussein <br>البشمهندس معتز ❤ </strong></span>
                 </div>
                 <button onclick="window.print()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black px-5 py-2.5 rounded-xl shadow-lg transition-all flex items-center gap-2 transform hover:scale-105">
                     <i class="fa-solid fa-print text-base"></i>
                     <span>طباعة / PDF</span>
                 </button>
+                <button onclick="exportToExcel()" class="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-slate-950 font-black px-5 py-2.5 rounded-xl shadow-lg transition-all flex items-center gap-2 transform hover:scale-105">
+        <i class="fa-solid fa-file-excel text-base"></i>
+        <span>تصدير Excel</span>
+    </button>
             </div>
         </div>
     </header>
@@ -120,6 +124,8 @@
                         <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300"><span class="font-bold text-amber-400 block">05:00 م - 10:00 م</span><span class="text-[10px] text-slate-400">(5 ساعات)</span></div>
                         <div class="bg-slate-900 p-2 rounded border border-amber-500/50 text-slate-300"><span class="font-bold text-amber-400 block">05:00 م - 01:00 ص</span><span class="text-[10px] text-slate-400">(8 ساعات)</span></div>
                         <div class="bg-slate-900 p-2 rounded border border-amber-500/50 text-slate-300"><span class="font-bold text-amber-400 block">08:00 م - 12:00 ص</span><span class="text-[10px] text-slate-400">(4 ساعات)</span></div>
+                                                <div class="bg-slate-900 p-2 rounded border border-slate-800 text-slate-300"><span class="font-bold text-amber-400 block">03:00 م - 12:00 ص</span><span class="text-[10px] text-slate-400">(8 ساعات)</span></div>
+
                         <div class="bg-amber-500/10 text-amber-400 p-2 rounded border border-amber-500/30 font-bold flex items-center justify-center text-[11px] text-center">مطابقة آليّة دقيقة</div>
                     </div>
                 </div>
@@ -244,12 +250,12 @@
         });
 
         const defaultEmployees = [
-            { id: 1, name: "Belal" }, { id: 2, name: "MoatazHussein" }, { id: 3, name: "fatmaEID" }, { id: 4, name: "SaraMahmoud" },
-            { id: 5, name: "MaiKhamis" }, { id: 6, name: "HabibaAbdELbasat" }, { id: 7, name: "Doaakamel" }, { id: 8, name: "MaiAshref" },
-            { id: 9, name: "Fathymohamed" }, { id: 10, name: "MohamedAdei" }, { id: 11, name: "Gaberfathy" }, { id: 12, name: "MonaAhmed" },
-            { id: 13, name: "NadaHamada" }, { id: 14, name: "OsamaMagdy" }, { id: 15, name: "MaiKArem" }, { id: 16, name: "Fares" },
-            { id: 17, name: "Khaled" }, { id: 18, name: "Mennahassan" }, { id: 19, name: "AhmedEssam" }, { id: 20, name: "HabibaADEL" },
-            { id: 21, name: "SherifEZzat" }, { id: 22, name: "Roqiafawzy" }
+            { id: 1, name: "بلال (ريسبشن السبا)" }, { id: 2, name: "معتز (ريسبشن صالة الرجالة)" }, { id: 3, name: "فاطمة (ريسبشن صالة السيدات)" }, { id: 4, name: "سارة (ريسبشن صالة السيدات)" },
+            { id: 5, name: "مي خميس (ريسبشن)" }, { id: 6, name: "حبيبة (ريسبشن)" }, { id: 7, name: "دعاء (ريسبشن السبا)" }, { id: 8, name: "مي اشرف (ريسبشن)" },
+            { id: 9, name: "ك فتحي" }, { id: 10, name: "ك محمد عادل " }, { id: 11, name: "كوتش جابر" }, { id: 12, name: "ك منى" },
+            { id: 13, name: "ك ندى" }, { id: 14, name: "(ريسبشن) اسامة " }, { id: 15, name: "ك مي كريم" }, { id: 16, name: "ك فارس" },
+            { id: 17, name: " (نظافة) خالد " }, { id: 18, name: " (ريسبشن) منة  " }, { id: 19, name: "احمد عصام(ريسبشن صالة الرجالة )طباعة" }, { id: 20, name: "ك حبيبة" },
+            { id: 21, name: "ك زين" }, { id: 22, name: "ك رقية" }
         ];
 
         const DEFINED_SHIFTS = [
@@ -583,6 +589,43 @@
         function closeModal() {
             document.getElementById('detailsModal').classList.add('hidden');
         }
+        function exportToExcel() {
+    const dataKeys = Object.keys(globalProcessedData);
+    if (dataKeys.length === 0) {
+        alert('لا توجد بيانات متاحة للتصدير!');
+        return;
+    }
+
+    // تجهيز البيانات وتنسيق أسماء الأعمدة للتقرير
+    const excelData = dataKeys.map(id => {
+        const item = globalProcessedData[id];
+        return {
+            "ID": item.id,
+            "اسم الموظف": item.name,
+            "الشيفت المتكرر": item.frequentShift,
+            "أيام الحضور": item.attendanceDays,
+            "أيام الغياب": item.absenceDays,
+            "إجمالي الساعات": item.totalMonthlyHours,
+            "الساعات الإضافية": item.overtimeHours,
+            "نسبة الالتزام": `${item.commitmentScore}%`,
+            "التقييم العام": item.evaluation.label
+        };
+    });
+
+    // إنشاء ورقة العمل والمصنف
+    const worksheet = XLSX.utils.json_to_sheet(excelData);
+    
+    // ضبط اتجاه الشيت ليكون من اليمين لليسار (RTL)
+    if (!worksheet['!views']) worksheet['!views'] = [];
+    worksheet['!views'].push({ RTL: true });
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "تقرير الحضور");
+
+    // تحميل الملف باسم يحتوي على تاريخ اليوم
+    const dateStr = new Date().toISOString().split('T')[0];
+    XLSX.writeFile(workbook, `Montu_Gym_Attendance_${dateStr}.xlsx`);
+}
     </script>
 </body>
 </html>
