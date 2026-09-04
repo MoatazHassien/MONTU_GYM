@@ -78,11 +78,18 @@
                 </div>
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-4 flex-wrap justify-end">
                 <div class="bg-slate-950/80 border border-slate-700/80 px-4 py-2 rounded-xl shadow-inner flex items-center gap-2">
                     <div class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></div>
                     <span class="text-xs text-slate-400 en-font">By : <strong class="text-amber-400 font-bold">Eng . Moataz Hussein <br>البشمهندس معتز ❤ </strong></span>
                 </div>
+                
+                <!-- زر لوحة الإدارة (يظهر فقط إذا كان الباسورد admin123) -->
+                <button id="adminBtn" onclick="openAdminModal()" class="hidden bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-black px-5 py-2.5 rounded-xl shadow-lg transition-all flex items-center gap-2 transform hover:scale-105">
+                    <i class="fa-solid fa-user-shield text-base"></i>
+                    <span>الإدارة</span>
+                </button>
+
                 <button onclick="window.print()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-black px-5 py-2.5 rounded-xl shadow-lg transition-all flex items-center gap-2 transform hover:scale-105">
                     <i class="fa-solid fa-print text-base"></i>
                     <span>طباعة / PDF</span>
@@ -223,11 +230,96 @@
         </div>
     </div>
 
+    <!-- Admin Modal -->
+    <div id="adminModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-4 z-[60] no-print">
+        <div class="bg-slate-900 rounded-2xl shadow-2xl border border-purple-500 max-w-2xl w-full max-h-[90vh] flex flex-col overflow-hidden">
+            <div class="p-4 bg-slate-950 text-white flex justify-between items-center border-b-2 border-purple-500">
+                <div class="flex items-center gap-3">
+                    <div class="bg-purple-500/20 p-2.5 rounded-xl border border-purple-500/40 text-purple-400">
+                        <i class="fa-solid fa-user-shield text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-base text-white">لوحة الإدارة والتخصيص</h3>
+                        <p class="text-slate-400 text-xs">إضافة وحذف موظفين وتخصيص الشيفتات</p>
+                    </div>
+                </div>
+                <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white p-2 text-xl transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-6 overflow-y-auto flex-1 bg-slate-900 space-y-6">
+                <!-- رسائل نظام الإدارة -->
+                <div id="adminStatusMsg" class="hidden text-xs font-bold p-3 rounded-lg border text-center transition-all"></div>
+
+                <!-- Add Employee Section -->
+                <div class="bg-slate-950/50 p-5 rounded-xl border border-slate-700">
+                    <h4 class="text-purple-400 font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-user-plus"></i> إضافة موظف جديد</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">كود الموظف (ID)</label>
+                            <input type="number" id="newEmpId" placeholder="مثال: 23" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:border-purple-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">اسم الموظف</label>
+                            <input type="text" id="newEmpName" placeholder="الاسم والقسم" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:border-purple-500 outline-none">
+                        </div>
+                    </div>
+                    <button onclick="addEmployee()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors w-full shadow-lg">حفظ وإضافة الموظف</button>
+                </div>
+
+                <!-- Assign Shift Section -->
+                <div class="bg-slate-950/50 p-5 rounded-xl border border-slate-700">
+                    <h4 class="text-purple-400 font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-clock-rotate-left"></i> تخصيص شيفت ثابت لموظف</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">اختر الموظف</label>
+                            <select id="adminEmpSelect" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:border-purple-500 outline-none">
+                                <!-- Options populated by JS -->
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">اختر الشيفت</label>
+                            <select id="adminShiftSelect" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:border-purple-500 outline-none">
+                                <option value="auto">تلقائي (يُكتشف حسب وقت الدخول)</option>
+                                <!-- Options populated by JS -->
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="assignShift()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors w-full shadow-lg">حفظ تخصيص الشيفت</button>
+                </div>
+
+                <!-- Delete Employee Section -->
+                <div class="bg-rose-950/10 p-5 rounded-xl border border-rose-900/50">
+                    <h4 class="text-rose-400 font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-user-minus"></i> حذف موظف</h4>
+                    <div class="grid grid-cols-1 gap-4 mb-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 mb-1">اختر الموظف للحذف</label>
+                            <select id="deleteEmpSelect" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:border-rose-500 outline-none">
+                                <!-- Options populated by JS -->
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="deleteEmployee()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 py-2 rounded-lg text-sm transition-colors w-full shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-trash-can"></i> حذف الموظف نهائياً
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- Application Script Logic -->
     <script>
+        // المتغيرات الجديدة الخاصة بلوحة الإدارة
+        let customShifts = {}; // لحفظ الشيفتات المخصصة يدوياً للموظفين { empId: shiftName }
+
         function checkPassword() {
             const pass = document.getElementById('passwordInput').value;
-            if (pass === 'moataz123') { 
+            // إضافة باسورد الإدارة بجانب الباسورد العادي
+            if (pass === 'moataz123' || pass === 'admin123') { 
+                
+                if (pass === 'admin123') {
+                    document.getElementById('adminBtn').classList.remove('hidden'); // إظهار زر الإدارة
+                }
+
                 const lockScreen = document.getElementById('lockScreen');
                 lockScreen.classList.add('opacity-0');
                 document.body.classList.remove('overflow-hidden');
@@ -254,7 +346,7 @@
             { id: 5, name: "مي خميس (ريسبشن)" }, { id: 6, name: "حبيبة (ريسبشن)" }, { id: 7, name: "دعاء (ريسبشن السبا)" }, { id: 8, name: "مي اشرف (ريسبشن)" },
             { id: 9, name: "ك فتحي" }, { id: 10, name: "ك محمد عادل " }, { id: 11, name: "كوتش جابر" }, { id: 12, name: "ك منى" },
             { id: 13, name: "ك ندى" }, { id: 14, name: "(ريسبشن) اسامة " }, { id: 15, name: "ك مي كريم" }, { id: 16, name: "ك فارس" },
-            { id: 17, name: " (نظافة) خالد " }, { id: 18, name: " (ريسبشن) منة  " }, { id: 19, name: "احمد عصام(ريسبشن صالة الرجالة )" }, { id: 20, name: "ك حبيبة" },
+            { id: 17, name: " (نظافة) خالد " }, { id: 18, name: " (ريسبشن) منة  " }, { id: 19, name: "احمد عصام(ريسبشن صالة الرجالة )طباعة" }, { id: 20, name: "ك حبيبة" },
             { id: 21, name: "ك زين" }, { id: 22, name: "ك رقية" }
         ];
 
@@ -265,7 +357,8 @@
             { name: "02:00 م - 10:00 م", startHour: 14, startMin: 0,  endHour: 22, endMin: 0,  requiredHours: 8 },
             { name: "05:00 م - 10:00 م", startHour: 17, startMin: 0,  endHour: 22, endMin: 0,  requiredHours: 5 },
             { name: "05:00 م - 01:00 ص", startHour: 17, startMin: 0,  endHour: 1,  endMin: 0,  requiredHours: 8 },
-            { name: "08:00 م - 12:00 ص", startHour: 20, startMin: 0,  endHour: 0,  endMin: 0,  requiredHours: 4 }
+            { name: "08:00 م - 12:00 ص", startHour: 20, startMin: 0,  endHour: 0,  endMin: 0,  requiredHours: 4 },
+            { name: "03:00 م - 12:00 ص", startHour: 15, startMin: 0,  endHour: 0,  endMin: 0,  requiredHours: 8 }
         ];
 
         let parsedRecords = [];
@@ -395,7 +488,13 @@
                         const hasCheckOut = times.length > 1;
                         const cout = hasCheckOut ? times[times.length - 1] : null;
 
-                        const matched = matchShift(cin);
+                        // تحديث مطابقة الشيفت بناء على الإدارة إذا تم التحديد، وإلا تلقائي
+                        let matched = matchShift(cin);
+                        if (customShifts[emp.id] && customShifts[emp.id] !== 'auto') {
+                            const manualShift = DEFINED_SHIFTS.find(s => s.name === customShifts[emp.id]);
+                            if (manualShift) matched = manualShift;
+                        }
+                        
                         shiftCounts[matched.name] = (shiftCounts[matched.name] || 0) + 1;
 
                         let actualWorked = 0;
@@ -589,6 +688,126 @@
         function closeModal() {
             document.getElementById('detailsModal').classList.add('hidden');
         }
+
+        // --- وظائف لوحة الإدارة ---
+        
+        function openAdminModal() {
+            updateAdminSelects();
+            document.getElementById('adminModal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function updateAdminSelects() {
+            const empSelect = document.getElementById('adminEmpSelect');
+            const deleteEmpSelect = document.getElementById('deleteEmpSelect'); // Select element for deletion
+            
+            if (empSelect) empSelect.innerHTML = '';
+            if (deleteEmpSelect) deleteEmpSelect.innerHTML = '';
+
+            defaultEmployees.forEach(emp => {
+                // Populate Assign Shift dropdown
+                if (empSelect) {
+                    const opt = document.createElement('option');
+                    opt.value = emp.id;
+                    opt.textContent = `${emp.id} - ${emp.name}`;
+                    empSelect.appendChild(opt);
+                }
+                
+                // Populate Delete Employee dropdown
+                if (deleteEmpSelect) {
+                    const optDelete = document.createElement('option');
+                    optDelete.value = emp.id;
+                    optDelete.textContent = `${emp.id} - ${emp.name}`;
+                    deleteEmpSelect.appendChild(optDelete);
+                }
+            });
+
+            const shiftSelect = document.getElementById('adminShiftSelect');
+            if (shiftSelect) {
+                shiftSelect.innerHTML = '<option value="auto">تلقائي (يُكتشف حسب وقت الدخول)</option>';
+                DEFINED_SHIFTS.forEach(shift => {
+                    const opt = document.createElement('option');
+                    opt.value = shift.name;
+                    opt.textContent = shift.name;
+                    shiftSelect.appendChild(opt);
+                });
+            }
+        }
+        
+        function deleteEmployee() {
+            const empId = parseInt(document.getElementById('deleteEmpSelect').value);
+            if (isNaN(empId)) {
+                showAdminMessage("يرجى اختيار موظف صالح للحذف", "text-rose-400 border-rose-900 bg-rose-950/50");
+                return;
+            }
+
+            const index = defaultEmployees.findIndex(e => e.id === empId);
+            if (index !== -1) {
+                const empName = defaultEmployees[index].name;
+                defaultEmployees.splice(index, 1);
+                delete customShifts[empId];
+                delete globalProcessedData[empId];
+                
+                showAdminMessage(`تم حذف الموظف (${empName}) بنجاح`, "text-emerald-400 border-emerald-900 bg-emerald-950/50");
+                updateAdminSelects();
+                calculateAndRender();
+            } else {
+                showAdminMessage("الموظف غير موجود بالقائمة", "text-rose-400 border-rose-900 bg-rose-950/50");
+            }
+        }
+
+        function showAdminMessage(text, classes) {
+            const msgBox = document.getElementById('adminStatusMsg');
+            if (msgBox) {
+                msgBox.textContent = text;
+                msgBox.className = `text-xs font-bold p-3 rounded-lg border text-center transition-all mb-4 ${classes}`;
+                msgBox.classList.remove('hidden');
+                setTimeout(() => msgBox.classList.add('hidden'), 4000);
+            }
+        }
+
+        function addEmployee() {
+            const idVal = document.getElementById('newEmpId').value;
+            const nameVal = document.getElementById('newEmpName').value;
+            if(!idVal || !nameVal) {
+                alert("يرجى إدخال كود واسم الموظف الجديد");
+                return;
+            }
+            const id = parseInt(idVal);
+            if(defaultEmployees.find(e => e.id === id)) {
+                alert("كود الموظف هذا موجود بالفعل، يرجى إدخال كود مختلف!");
+                return;
+            }
+            
+            // إضافة الموظف الجديد
+            defaultEmployees.push({ id: id, name: nameVal });
+            alert("تم إضافة الموظف بنجاح");
+            
+            // تفريغ الخانات وتحديث البيانات
+            document.getElementById('newEmpId').value = '';
+            document.getElementById('newEmpName').value = '';
+            updateAdminSelects();
+            calculateAndRender();
+        }
+
+        function assignShift() {
+            const empId = parseInt(document.getElementById('adminEmpSelect').value);
+            const shiftName = document.getElementById('adminShiftSelect').value;
+            
+            if(shiftName === 'auto') {
+                delete customShifts[empId];
+                alert("تم إرجاع الموظف للتعرف التلقائي على الشيفتات");
+            } else {
+                customShifts[empId] = shiftName;
+                alert("تم حفظ الشيفت الثابت للموظف بنجاح");
+            }
+            // إعادة حساب النتائج وتحديث الجدول
+            calculateAndRender(); 
+        }
+
         function exportToExcel() {
     const dataKeys = Object.keys(globalProcessedData);
     if (dataKeys.length === 0) {
